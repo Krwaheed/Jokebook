@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Welcome to Jokebook!
+  if joke
+    h2 Random Joke
+    p #{joke.setup} - #{joke.delivery}
+  else
+    p No jokes available.
+  a(href='/jokebook/categories') View Joke Categories

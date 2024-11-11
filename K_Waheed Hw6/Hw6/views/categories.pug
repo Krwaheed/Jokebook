@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h2 Joke Categories
+    ul
+        each category in categories
+            li: a(href=`/jokebook/jokes/${category.name}`) #{category.name}
+
+    // Search Form
+    h3 Search for Jokes by Category
+    form(action="/jokebook/jokes" method="GET")
+        label(for="category") Enter Category Name:
+        input(type="text" name="category" placeholder="e.g., funnyJoke")
+        button(type="submit") Search
+    p
+        a(href='/') Back to Home

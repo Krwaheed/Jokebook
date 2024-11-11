@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h2 Jokes in #{category}
+    ul
+        each joke in jokes
+            li #{joke.setup} - #{joke.delivery}
+    if !jokes.length
+        p No jokes available in this category.
+
+    // Form to add a new joke
+    h3 Add a New Joke to #{category}
+    form(action="/jokebook/jokes/new" method="POST")
+        input(type="hidden" name="category" value=category)
+        label(for="setup") Setup:
+        input(type="text" name="setup" required)
+        label(for="delivery") Delivery:
+        input(type="text" name="delivery" required)
+        button(type="submit") Add Joke
+    p
+        a(href='/jokebook/categories') Back to Categories
